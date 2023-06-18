@@ -1,8 +1,17 @@
 version: 2.1
+version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1.27.0
+  cypress: cypress-io/cypress@1
+workflows:
+  build:
+  dubizzle-e2e-tests:
+    jobs:
+      - cypress/run
+        name: "e2e-dubizzle-automated-tests"
+        
 jobs:
-  e2e-automated-tests:
+  - cypress/run
+    name: "e2e-dubizzle-mena-tests
     docker:
       - image: circleci/node:14
     steps:
@@ -15,8 +24,3 @@ jobs:
           name: Dubizzle tests
           command: npx cypress run
 
-workflows:
-  version: 2
-  dubizzle-e2e-tests:
-    jobs:
-      - e2e-automated-tests
