@@ -8,9 +8,9 @@ workflows:
     jobs:
       - cypress/run
           e2e-dubizzle-automated-tests
-          steps:
-            - checkout
-            - run: node --version
+      steps:
+        - checkout
+        - run: node --version
         
 # jobs:
 #   - cypress/run
