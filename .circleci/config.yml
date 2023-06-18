@@ -6,7 +6,7 @@ workflows:
   build:
   dubizzle-e2e-tests:
     jobs:
-      - cypress/run
+      - cypress/run:
           e2e-dubizzle-automated-tests
       steps:
         - checkout
