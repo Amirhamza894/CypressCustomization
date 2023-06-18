@@ -1,4 +1,4 @@
-version: 2.1
+
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
@@ -7,7 +7,7 @@ workflows:
   dubizzle-e2e-tests:
     jobs:
       - cypress/run
-          name: 'e2e-dubizzle-automated-tests'
+          e2e-dubizzle-automated-tests
         
 jobs:
   - cypress/run
