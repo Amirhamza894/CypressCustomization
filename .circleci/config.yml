@@ -2,13 +2,13 @@ version: 2.1
 
 workflows:
   dubizzle-eg-workflow:
-  jobs:
-    - Automated-tests
+  # jobs:
+  #   - Automated-tests
 
-job:
-  - Automated-tests
-  name: 'dubizzle-eg-e2e-functional-sanity-tests'
-  docker:
+  job:
+    - Automated-tests
+    name: 'dubizzle-eg-e2e-functional-sanity-tests'
+    docker:
       - image: cimg/node:20.3.0
     steps:
       - checkout
