@@ -1,14 +1,22 @@
-
 version: 2.1
 orbs:
-  # "cypress-io/cypress@3" installs the latest published
-  # version "s.x.y" of the orb. We recommend you then use
-  # the strict explicit version "cypress-io/cypress@3.x.y"
-  # to lock the version and prevent unexpected CI changes
-  cypress: cypress-io/cypress@3
-
+  cypress: cypress-io/cypress@2.2.0
 workflows:
   build:
     jobs:
-      - cypress/run: # "run" job comes from "cypress" orb
-          start-command: 'npm run start'
+      - cypress/run:
+          name: 'e2e_dubizzle-tests'
+          store_artifacts: true
+          
+  daily-run-workflow:
+    triggers:
+      - schedule:
+          # Every day, at 5:30pm PK time.
+          cron: "30 1 * * *"
+          filters:
+            branches:
+              only:
+                - stage
+    jobs:
+      - cypress/run:
+          name: 'e2e_scheduled_dubizzle-tests'
