@@ -7,20 +7,20 @@ workflows:
   dubizzle-e2e-tests:
     jobs:
       - cypress/run
-        name: "e2e-dubizzle-automated-tests"
+          name: "e2e-dubizzle-automated-tests"
         
 jobs:
   - cypress/run
-    name: "e2e-dubizzle-mena-tests"
-    docker:
-      - image: circleci/node:14
-    steps:
-      - checkout
-      - run: node --version
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: Dubizzle tests
-          command: npx cypress run
+      name: "e2e-dubizzle-mena-tests"
+      docker:
+        - image: circleci/node:14
+      steps:
+        - checkout
+        - run: node --version
+        - run:
+            name: Install dependencies
+            command: npm install
+        - run:
+            name: Dubizzle tests
+            command: npx cypress run
 
