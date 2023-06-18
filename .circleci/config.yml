@@ -12,8 +12,8 @@ workflows:
 jobs:
   - cypress/run
       e2e-dubizzle-mena-tests
-        docker:
-          - image: circleci/node:14
+        # docker:
+        #   - image: circleci/node:14
         steps:
           - checkout
           - run: node --version
