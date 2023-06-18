@@ -8,5 +8,5 @@ orbs:
 workflows:
   build:
     jobs:
-      - cypress/run: # "run" job comes from "cypress" orb
+      - cypress-io/run: # "run" job comes from "cypress" orb
           start-command: 'npm run start'
