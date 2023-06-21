@@ -1,18 +1,17 @@
-# Not using the cypress orb
 version: 2.1
-jobs:
-  build_and_test:
-    docker: # use docker argument
-      - image: cimg/node:16.13 # use node docker image with tag 16.13
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm run start
-      - run: npm run test # assuming you have a test script in your package.json file
+orbs:
+  # "cypress-io/cypress@3" installs the latest published
+  # version "s.x.y" of the orb. We recommend you then use
+  # the strict explicit version "cypress-io/cypress@3.x.y"
+  # to lock the version and prevent unexpected CI changes
+  cypress: cypress-io/cypress@3
 workflows:
   build:
     jobs:
-      - build_and_test
+      - cypress/run: # "run" job comes from "Cypress" orb
+          docker:
+            image: cimg/node:16.13 # use node docker image
+          start-command: 'npm run start'
   daily-scheduled-run:
     triggers:
       - schedule:
@@ -22,33 +21,7 @@ workflows:
               only:
                 - main
     jobs:
-      - build_and_test
-
-
-# version: 2.1
-# orbs:
-#   # "cypress-io/cypress@3" installs the latest published
-#   # version "s.x.y" of the orb. We recommend you then use
-#   # the strict explicit version "cypress-io/cypress@3.x.y"
-#   # to lock the version and prevent unexpected CI changes
-#   cypress: cypress-io/cypress@3
-# workflows:
-#   build:
-#     jobs:
-#       - cypress/run: # "run" job comes from "Cypress" orb
-#           docker:
-#             image: cimg/node:16.13 # use node docker image
-#           start-command: 'npm run start'
-#   daily-scheduled-run:
-#     triggers:
-#       - schedule:
-#           cron: "0 5 * * *"
-#           filters:
-#             branches:
-#               only:
-#                 - main
-#     jobs:
-#       - cypress/run:
-#           docker:
-#             image: cimg/node:16.13 # use node docker image
-#           start-command: 'npm run start'
+      - cypress/run:
+          docker:
+            image: cimg/node:16.13 # use node docker image
+          start-command: 'npm run start'
