@@ -9,9 +9,8 @@ workflows:
   build:
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
-          executor:
-            name: node/default # use node docker image
-            tag: '16.13'
+          docker:
+            image: cimg/node:16.13 # use node docker image
           start-command: 'npm run start'
   daily-scheduled-run:
     triggers:
@@ -23,7 +22,6 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          executor:
-            name: node/default # use node docker image
-            tag: '16.13'
+          docker:
+            image: cimg/node:16.13 # use node docker image
           start-command: 'npm run start'
