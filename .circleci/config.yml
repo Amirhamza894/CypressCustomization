@@ -10,3 +10,10 @@ workflows:
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
           start-command: 'npm run start'
+  triggers:
+      - schedule:
+          cron: "0 5 * * *"
+          filters:
+            branches:
+              only:
+                - main
