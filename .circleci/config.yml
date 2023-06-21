@@ -11,7 +11,7 @@ workflows:
       - cypress/run: # "run" job comes from "Cypress" orb
           start-command: 'npm run start'
   daily-scheduled-run:
-  triggers:
+    triggers:
       - schedule:
           cron: "0 5 * * *"
           filters:
