@@ -9,7 +9,7 @@ workflows:
   build:
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
-          # start-command: 'npm run start'
+          start-command: 'npx cypress run'
   daily-scheduled-run:
     triggers:
       - schedule:
@@ -20,4 +20,4 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          # start-command: 'npm run start'
+          start-command: 'npx cypress run'
