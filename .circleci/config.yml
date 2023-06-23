@@ -20,9 +20,9 @@ workflows:
             branches:
               only:
                 - main
-    # jobs:
-    #   - cypress/run:
-    #       name: dubizzle tests
-    #       install-command: 'npm ci' # Just install Cypress
-    #       start-command: CYPRESS_BASE_URL=$CIRCLECI_CYPRESS_BASE_URL npx cypress run
+    jobs:
+      - cypress/run:
+          name: dubizzle tests
+          install-command: 'npm ci' # Just install Cypress
+          start-command: CYPRESS_BASE_URL=$CIRCLECI_CYPRESS_BASE_URL npx cypress run
     #       # --env MY_URL="https://www.dubizzle.com.eg/en/"
