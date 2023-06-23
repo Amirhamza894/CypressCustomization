@@ -9,7 +9,7 @@ workflows:
   build:
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
-            env:
+            environment::
               base_url: 'https://www.dubizzle.com.eg/en/'
           start-command: 'npx cypress run'
           
@@ -23,7 +23,7 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-            env:
+            environment::
               base_url: 'https://www.dubizzle.com.eg/en/'
           start-command: 'npx cypress run'
           # --env MY_URL="https://www.dubizzle.com.eg/en/"
