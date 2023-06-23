@@ -5,19 +5,13 @@ orbs:
   # the strict explicit version "cypress-io/cypress@3.x.y"
   # to lock the version and prevent unexpected CI changes
   cypress: cypress-io/cypress@3
-
-executors:
-  variables:
-    docker:
-      - image: cimg/base:2023.06
-    environment:
-      BASE_URL: BASE_URL # This will be available as Cypress.env('BASE_URL') 
+ 
 workflows:
   dubizzle:
     jobs:
     - cypress/run: # "run" job comes from "Cypress" orb
-        executor: variables
-        start-command: 'npx cypress run'
+        install-command: 'npm ci' # Just install Cypress
+        run-command: 'npx cypress run --env BASE_URL=$BASE_URL' # Use the environment variable from CircleCI
           
   daily-scheduled-run:
     triggers:
@@ -30,6 +24,6 @@ workflows:
     jobs:
       - cypress/run:
           name: dubizzle tests
-          executor: variables
-          start-command: 'npx cypress run'
+          install-command: 'npm ci' # Just install Cypress
+          run-command: 'npx cypress run --env MY_URL=$BASE_URL' # Use the environment variable from CircleCI
           # --env MY_URL="https://www.dubizzle.com.eg/en/"
