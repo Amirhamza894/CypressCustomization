@@ -9,7 +9,15 @@ workflows:
   build:
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
-          start-command: 'npx cypress run --env base_url="$MY_URL"'
+          name: Cypress Run
+          executor: cypress/base
+          steps:
+            - checkout
+            - run:
+                name: Set Environment Variables
+                command: echo "export MY_URL='https://www.dubizzle.com.eg/en/'" >> $BASH_ENV
+            - cypress/run:
+                start-command: 'npx cypress run --env base_url="$MY_URL"'
           env:
             MY_URL: "https://www.dubizzle.com.eg/en/"
           
@@ -23,7 +31,16 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          start-command: 'npx cypress run --env base_url="$MY_URL"'
-          env:
-            MY_URL: "https://www.dubizzle.com.eg/en/"
+          name: Cypress Run
+          executor: cypress/base
+          steps:
+            - checkout
+            - run:
+                name: Set Environment Variables
+                command: echo "export MY_URL='https://www.dubizzle.com.eg/en/'" >> $BASH_ENV
+            - cypress/run:
+                start-command: 'npx cypress run --env base_url="$MY_URL"'
+          # start-command: 'npx cypress run --env base_url="$MY_URL"'
+          # env:
+          #   MY_URL: "https://www.dubizzle.com.eg/en/"
           # --env MY_URL="https://www.dubizzle.com.eg/en/"
