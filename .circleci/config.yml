@@ -5,15 +5,13 @@ orbs:
   # the strict explicit version "cypress-io/cypress@3.x.y"
   # to lock the version and prevent unexpected CI changes
   cypress: cypress-io/cypress@3
+ 
 workflows:
-  build:
+  dubizzle:
     jobs:
-      - cypress/run: # "run" job comes from "Cypress" orb
-          # config:
-          #   env:
-          #     base-url: 'https://www.dubizzle.com.eg/en/'
-          start-command: 'npx cypress run --env MY_URL="https://www.dubizzle.com.eg/en/"'
-          
+    - cypress/run: # "run" job comes from "Cypress" orb
+        install-command: 'npm ci' # Just install Cypress
+        start-command: 'export BASE_URL=$BASE_URL && npx cypress run'          
   daily-scheduled-run:
     triggers:
       - schedule:
@@ -24,7 +22,7 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          # config:
-          #   env:
-          #     base-url: 'https://www.dubizzle.com.eg/en/'
-          start-command: 'npx cypress run --env MY_URL="https://www.dubizzle.com.eg/en/"'
+          name: dubizzle tests
+          install-command: 'npm ci' # Just install Cypress
+          start-command: 'export BASE_URL=$BASE_URL && npx cypress run'
+          # --env MY_URL="https://www.dubizzle.com.eg/en/"
