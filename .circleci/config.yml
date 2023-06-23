@@ -8,8 +8,6 @@ orbs:
 workflows:
   dubizzle:
     jobs:
-    environment:
-        BASE_URL: BASE_URL
     - cypress/run: # "run" job comes from "Cypress" orb
         start-command: 'npx cypress run'
           
