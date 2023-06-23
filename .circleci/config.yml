@@ -6,12 +6,12 @@ orbs:
   # to lock the version and prevent unexpected CI changes
   cypress: cypress-io/cypress@3
 workflows:
-  build:
+  dubizzle:
     jobs:
-      - cypress/run: # "run" job comes from "Cypress" orb
-          environment:
+      environment:
             BASE_URL: BASE_URL
-          name: Cypress Run
+      - cypress/run: # "run" job comes from "Cypress" orb
+          name: dubizzle tests
           start-command: 'npx cypress run'
           
   daily-scheduled-run:
@@ -24,6 +24,6 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-          name: Cypress Run
-          start-command: 'npx cypress run --env base_url="$base_url"'
+          name: dubizzle tests
+          start-command: 'npx cypress run'
           # --env MY_URL="https://www.dubizzle.com.eg/en/"
