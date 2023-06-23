@@ -8,7 +8,6 @@ orbs:
 workflows:
   dubizzle:
     jobs:
-    name: dubizzle tests
     environment:
         BASE_URL: BASE_URL
     - cypress/run: # "run" job comes from "Cypress" orb
