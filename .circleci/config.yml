@@ -21,7 +21,5 @@ workflows:
                 - main
     jobs:
       - cypress/run:
-            environment::
-              base_url: 'https://www.dubizzle.com.eg/en/'
           start-command: 'npx cypress run --env base_url="https://www.dubizzle.com.eg/en/"'
           # --env MY_URL="https://www.dubizzle.com.eg/en/"
