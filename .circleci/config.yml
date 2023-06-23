@@ -7,7 +7,7 @@ orbs:
   cypress: cypress-io/cypress@3
 workflows:
   build:
-  context: dubizzle
+    context: dubizzle
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
           name: Cypress Run
