@@ -8,10 +8,12 @@ orbs:
 workflows:
   dubizzle:
     jobs:
+    name: dubizzle tests
+    - steps:
+      - checkout
       environment:
-            BASE_URL: BASE_URL
+          BASE_URL: BASE_URL
       - cypress/run: # "run" job comes from "Cypress" orb
-          name: dubizzle tests
           start-command: 'npx cypress run'
           
   daily-scheduled-run:
