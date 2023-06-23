@@ -12,8 +12,8 @@ workflows:
     - cypress/run: # "run" job comes from "Cypress" orb
         install-command: 'npm ci' # Just install Cypress
         - run:
-          name: Print Environment Variable
-          command: echo $CIRCLECI_BASE_URL
+            name: Print Environment Variable
+            command: echo $CIRCLECI_BASE_URL
         start-command: npx cypress run --env CYPRESS_BASE_URL='CIRCLECI_BASE_URL   
   daily-scheduled-run:
     triggers:
