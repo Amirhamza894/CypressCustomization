@@ -7,11 +7,12 @@ orbs:
   cypress: cypress-io/cypress@3
 workflows:
   build:
-    context: dubizzle
     jobs:
       - cypress/run: # "run" job comes from "Cypress" orb
+          environment:
+            BASE_URL: BASE_URL
           name: Cypress Run
-          start-command: 'npx cypress run --env base_url="$base_url"'
+          start-command: 'npx cypress run'
           
   daily-scheduled-run:
     triggers:
