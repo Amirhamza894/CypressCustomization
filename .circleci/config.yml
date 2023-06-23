@@ -12,7 +12,7 @@ workflows:
           # config:
           #   env:
           #     base-url: 'https://www.dubizzle.com.eg/en/'
-          start-command: 'npx cypress run --env MY_URL="https://www.dubizzle.com.eg/en/"'
+          start-command: 'npx cypress run --env base_url="https://www.dubizzle.com.eg/en/"'
           
   daily-scheduled-run:
     triggers:
