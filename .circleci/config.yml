@@ -11,10 +11,8 @@ workflows:
     jobs:
     - cypress/run: # "run" job comes from "Cypress" orb
         install-command: 'npm ci' # Just install Cypress
-        - run:
-            name: Print Environment Variable
-            command: echo $CIRCLECI_BASE_URL
-        start-command: npx cypress run --env CYPRESS_BASE_URL='CIRCLECI_BASE_URL   
+        start-command: echo $CIRCLECI_BASE_URL
+        start-command: npx cypress run --env BASE_URL=$CIRCLECI_BASE_URL   
   daily-scheduled-run:
     triggers:
       - schedule:
@@ -23,9 +21,9 @@ workflows:
             branches:
               only:
                 - main
-    jobs:
-      - cypress/run:
-          name: dubizzle tests
-          install-command: 'npm ci' # Just install Cypress
-          start-command: CYPRESS_BASE_URL=$CIRCLECI_CYPRESS_BASE_URL npx cypress run
-          # --env MY_URL="https://www.dubizzle.com.eg/en/"
+    # jobs:
+    #   - cypress/run:
+    #       name: dubizzle tests
+    #       install-command: 'npm ci' # Just install Cypress
+    #       start-command: CYPRESS_BASE_URL=$CIRCLECI_CYPRESS_BASE_URL npx cypress run
+    #       # --env MY_URL="https://www.dubizzle.com.eg/en/"
