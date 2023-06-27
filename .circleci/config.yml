@@ -10,6 +10,7 @@ workflows:
   dubizzle:
     jobs:
     - cypress/run: # "run" job comes from "Cypress" orb
+        name: "e2e-test-check"
         install-command: 'npm ci' # Just install Cypress
         cypress-command: npx cypress run --env BASE_URL=$BASE_URL
   # daily-scheduled-run:
