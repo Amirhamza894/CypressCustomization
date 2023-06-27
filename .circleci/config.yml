@@ -11,10 +11,7 @@ workflows:
     jobs:
     - cypress/run: # "run" job comes from "Cypress" orb
         install-command: 'npm ci' # Just install Cypress
-        # start-command: npx cypress run --env BASE_URL=$CIRCLECI_BASE_URL 
-        start-command: npx cypress run
-        environment:
-          CYPRESS_BASE_URL: $BASE_URL
+        start-command: npx cypress run --env CYPRESS_BASE_URL=$CIRCLECI_BASE_URL 
   daily-scheduled-run:
     triggers:
       - schedule:
