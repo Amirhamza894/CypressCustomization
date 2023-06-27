@@ -13,7 +13,7 @@ workflows:
         install-command: 'npm ci' # Just install Cypress
         start-command: |
           echo "CYPRESS_BASE_URL: $CYPRESS_BASE_URL"
-          npx cypress run --env CYPRESS_BASE_URL=$CYPRESS_BASE_URL 
+          npx cypress run --env CYPRESS_BASE_URL=$CIRCLECI_BASE_URL 
   daily-scheduled-run:
     triggers:
       - schedule:
