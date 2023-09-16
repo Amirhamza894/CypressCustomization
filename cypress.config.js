@@ -1,4 +1,6 @@
 const { defineConfig } = require("cypress");
+require('dotenv').config();
+
 
 module.exports = defineConfig({
   e2e: {
@@ -9,4 +11,11 @@ module.exports = defineConfig({
       './cypress/e2e/horizontal/dubizzle-eg/*.js'
     ]
   },
+  env: {
+    // your base URL here
+    BASE_URL: process.env.BASE_URL, 
+    EMAIL: process.env.EMAIL,
+    PASSWORD: process.env.PASSWORD
+  }
+
 });
