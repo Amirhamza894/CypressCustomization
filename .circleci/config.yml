@@ -10,19 +10,20 @@ workflows:
   dubizzle:
     jobs:
     - cypress/run: # "run" job comes from "Cypress" orb
+        name: "e2e-test-check"
         install-command: 'npm ci' # Just install Cypress
-        start-command: 'export BASE_URL=$BASE_URL && npx cypress run'          
-  daily-scheduled-run:
-    triggers:
-      - schedule:
-          cron: "0 5 * * *"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - cypress/run:
-          name: dubizzle tests
-          install-command: 'npm ci' # Just install Cypress
-          start-command: 'export BASE_URL=$BASE_URL && npx cypress run'
-          # --env MY_URL="https://www.dubizzle.com.eg/en/"
+        cypress-command: npx cypress run --env BASE_URL=$BASE_URL,EMAIL=$EMAIL,PASSWORD=$PASSWORD
+  # daily-scheduled-run:
+  #   triggers:
+  #     - schedule:
+  #         cron: "0 5 * * *"
+  #         filters:
+  #           branches:
+  #             only:
+  #               - main
+  #   jobs:
+  #     - cypress/run:
+  #         name: dubizzle tests
+  #         install-command: 'npm ci' # Just install Cypress
+  #         start-command: npx cypress run --env BASE_URL=$CIRCLECI_BASE_URL 
+    #       # --env MY_URL="https://www.dubizzle.com.eg/en/"
