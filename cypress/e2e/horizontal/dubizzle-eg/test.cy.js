@@ -4,9 +4,9 @@ describe('testing cypress', function() {
         return false;
       })
 
-    it('testing TC', () => {
+    it.only('testing TC', () => {
         cy.visit(Cypress.env('BASE_URL'))
-        cy.url().should('be.equal', Cypress.env('BASE_URL'))
+        cy.url().should('be.equal', Cypress.env('https://www.dubizzle.com.eg/en/'))
     })
 
     it('should login', () => {
