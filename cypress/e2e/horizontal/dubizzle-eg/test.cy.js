@@ -9,7 +9,7 @@ describe('testing cypress', function() {
         cy.url().should('be.equal', Cypress.env('BASE_URL'))
     })
 
-    it.only('should login', () => {
+    it('should login', () => {
         cy.visit(Cypress.env('BASE_URL'))
         cy.get('._1b04dcc1 > ._261203a9').click()
         cy.get('._21b291bd > :nth-child(3)').click()
