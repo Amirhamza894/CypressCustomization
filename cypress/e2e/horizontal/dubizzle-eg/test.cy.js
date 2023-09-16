@@ -4,20 +4,20 @@ describe('testing cypress', function() {
         return false;
       })
 
-    it.only('testing TC', () => {
+    it('testing TC', () => {
         cy.visit(Cypress.env('BASE_URL'))
-        cy.url().should('be.equal', 'https://www.dubizzle.com.eg/en/')
+        cy.url().should('be.equal', Cypress.env('BASE_URL'))
     })
 
     it('should login', () => {
         cy.visit(Cypress.env('BASE_URL'))
-        cy.get('._1b04dcc1 > ._261203a9').click()
-        cy.get('._21b291bd > :nth-child(3)').click()
+        cy.get("button[aria-label$='Login']").click()
+        cy.get("._1075545d.a67fa1b7._42f36e3b.d059c029._858a64cf > :nth-child(3)").click()
         cy.get('#email').type(Cypress.env('EMAIL'))
-        cy.get('.a755fcd9 > button').click()
+        cy.get("button[type='button']").click()
         .wait(5000)
         cy.get('#password').type(Cypress.env('PASSWORD'))
-        cy.get('.a755fcd9 > ._5fd7b300').click()
+        cy.get("button[type='button'] > span").click()
 
     })
 
