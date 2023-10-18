@@ -15,6 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
+import './Presentation/cySteps'
+import './EyesOnTest/cyOnFail'
+import './EyesOnTest/cyOnPass'
+import './Setup/login'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
