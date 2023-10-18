@@ -1,7 +1,7 @@
 // const { method } = require("cypress/types/bluebird");
 /// <reference types="Cypress" />
 
-describe('testing cypress', function() {
+describe('Feature Functionality Testing', function() {
 
     Cypress.on('uncaught:exception', (err, runnable) => {
         return false;
@@ -28,7 +28,7 @@ describe('testing cypress', function() {
 
     it('should login', function() {
         cy.step("Visit dubizzle")
-        cy.visitDubizzle()
+        cy.visit(Cypress.env('BASE_URL'))
 
         cy.step("Click on Login button")
         cy.get("button[aria-label$='Login']").click()
@@ -52,7 +52,7 @@ describe('testing cypress', function() {
 
     it("login", ()=> {
         cy.login()
-        
+
     })
 
     afterEach(() => {
