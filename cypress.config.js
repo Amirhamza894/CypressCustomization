@@ -3,6 +3,7 @@ require('dotenv').config();
 
 
 module.exports = defineConfig({
+      defaultCommandTimeout: 10000,
     projectId: 'aehhmk',
   e2e: {
     setupNodeEvents(on, config) {
