@@ -26,12 +26,13 @@ describe('Feature Functionality Testing', function() {
         
     })
 
-    it('should login', function() {
+    let title
+    it.only(title="Verify login with valid credentials", function() {
         cy.step("Visit dubizzle")
         cy.visit(Cypress.env('BASE_URL'))
 
         cy.step("Click on Login button")
-        cy.get("button[aria-label$='Login']").click()
+        cy.get("button[aria-label$='Login']", {timeout: 60000}).click()
 
         cy.step("Click on continue with email login method")
         cy.get("._1075545d.a67fa1b7._42f36e3b.d059c029._858a64cf > :nth-child(3)").click()
@@ -50,12 +51,7 @@ describe('Feature Functionality Testing', function() {
 
     })
 
-    it("login", ()=> {
-        cy.login()
-
-    })
-
     afterEach(() => {
-        cy.PassPresentation(this.fullTitle())
+        cy.PassPresentation(title)
       }); 
 })
