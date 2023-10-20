@@ -15,7 +15,8 @@ describe('Feature Functionality Testing', function() {
         //   });
     });
 
-    it('testing TC', () => {
+    let title
+    it(title = 'Verify url is working fine and the elements load properly', () => {
 
         cy.step("Visit dubizzle")
         cy.visit(Cypress.env('BASE_URL'))
@@ -29,7 +30,7 @@ describe('Feature Functionality Testing', function() {
         
     })
 
-    let title
+    
     it(title="Verify login with valid credentials", function() {
         cy.step("Visit dubizzle")
         cy.visit(Cypress.env('BASE_URL'))
