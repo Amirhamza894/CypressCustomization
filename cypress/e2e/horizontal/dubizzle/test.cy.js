@@ -47,7 +47,7 @@ describe('Feature Functionality Testing', function() {
         cy.get('#password').type(Cypress.env('PASSWORD'))
 
         cy.step("Click on login click button to login dubizzle")
-        cy.get("button[type='button'] > span").click()
+        cy.get("button[type='butto'] > span").click()
 
     })
 
