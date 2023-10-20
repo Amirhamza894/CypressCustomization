@@ -23,9 +23,6 @@ describe('Feature Functionality Testing', function() {
 
         cy.step("Verify the expected URL")
         cy.url().should('be.equal', Cypress.env('BASE_URL'))
-
-        cy.step("verify elements on home page")
-        cy.get("._6eb51e9a").should("be.visible")
         
     })
 

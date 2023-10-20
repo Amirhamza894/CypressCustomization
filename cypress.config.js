@@ -15,7 +15,7 @@ module.exports = defineConfig({
 
     },
     specPattern: [
-      './cypress/e2e/horizontal/dubizzle/*.js'
+      './cypress/e2e/TestCases/*.js'
     ]
   },
   env: {
